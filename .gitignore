@@ -1,0 +1,7 @@
+/Bin
+/obj
+/packages
+/PerfLogs
+*.sap
+*.suo
+*.user
