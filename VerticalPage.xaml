@@ -5,7 +5,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:zedgeLonglistSelector="clr-namespace:ZedgeLonglistSelector"
     xmlns:Adapters="clr-namespace:Zedge.Adapters"
     x:Class="ZedgeLonglistSelector.VerticalViewPage"
@@ -73,10 +73,15 @@
         <StaticResource ResourceKey="PhoneForegroundBrush"/>
     </phone:PhoneApplicationPage.Foreground>
     <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <phone:Pivot
 			SelectedIndex="{Binding DefaultSectionIndex}"
 			ItemsSource="{Binding Sections}"
-			Title="{Binding Name, Mode=OneWay}">
+			Title="{Binding Name, Mode=OneWay}"
+            Grid.Row="0">
             <phone:Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"  />
@@ -95,15 +100,12 @@
 								ItemTemplate="{StaticResource SelectingTemplate}"
 								ItemRealized="OnItemRealized" CacheMode="BitmapCache"
             />
-                            <StackPanel Grid.Row="1" Orientation="Horizontal" Visibility="{Binding Loading, Converter={StaticResource VisibilityConverter}}">
-                                <TextBlock Text="{Binding LoadingText}" />
-                                <ProgressBar   IsIndeterminate="True" Width="200"/>
-                            </StackPanel>
                         </Grid>
                     </Grid>
                 </DataTemplate>
             </phone:Pivot.ItemTemplate>
         </phone:Pivot>
+        <TextBlock Grid.Row="1" x:Name="LoadTime" Text="Loading..."/>
     </Grid>
 
 </phone:PhoneApplicationPage>

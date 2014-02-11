@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -10,15 +9,15 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Zedge.Core.ViewModel;
-using ZedgeLonglistSelector.Resources;
+using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace ZedgeLonglistSelector
 {
-    public partial class VerticalViewPage : PhoneApplicationPage
+    public partial class SimpleVerticalPage : PhoneApplicationPage
     {
         private readonly Stopwatch _stopWatch = new Stopwatch();
         // Constructor
-        public VerticalViewPage()
+        public SimpleVerticalPage()
         {
             InitializeComponent();
             Loaded += OnLoaded;
@@ -58,6 +57,13 @@ namespace ZedgeLonglistSelector
         private ItemVerticalViewModel ViewModel
         {
             get { return DataContext as ItemVerticalViewModel; }
+        }
+
+        private void OnItemTapped(object sender, GestureEventArgs e)
+        {
+            var item = ((FrameworkElement) sender).DataContext as ContentItemModel;
+            if (item !=null)
+                item.NavigateToItemCommand.Execute(item);
         }
     }
 }

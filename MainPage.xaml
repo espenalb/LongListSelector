@@ -27,9 +27,13 @@
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Button Content="Navigate to vertical" Click="NavigateToVerticalClicked"/>
-        </Grid>
+        <StackPanel x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Button Content="Navigate to vertical with complex template" 
+                    Click="NavigateToComplexVerticalClicked"/>
+
+            <Button Content="Navigate to vertical with simple textblock" 
+                    Click="NavigateToComplexSimpleClicked"/>
+        </StackPanel>
     </Grid>
 
 </phone:PhoneApplicationPage>

@@ -9,6 +9,7 @@ namespace ZedgeLonglistSelector
 {
     public class DesigntimeData
     {
+        public NavigationService NavigationService { get; set; }
         public ItemVerticalViewModel RingtoneVertical
         {
             get
@@ -20,9 +21,9 @@ namespace ZedgeLonglistSelector
             }
         }
 
-        private static ContentListModel CreateSectionList(string name)
+        private ContentListModel CreateSectionList(string name)
         {
-            return new ContentListModel(null, null, null)
+            return new ContentListModel(NavigationService, null, null)
             {
                 Name = name,
                 Items =
@@ -43,12 +44,12 @@ namespace ZedgeLonglistSelector
             };
         }
 
-        private static ContentItemModel CreateItem(string name, int ix, string cursor)
+        private ContentItemModel CreateItem(string name, int ix, string cursor)
         {
             return new ContentItemModel
             {
                 Id = ix, 
-                Title = name + cursor + " Ring" + ix
+                Title = name + cursor + " Ring" + ix,
             };
         }
     }

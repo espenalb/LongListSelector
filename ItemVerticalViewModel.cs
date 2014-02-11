@@ -36,12 +36,7 @@ namespace Zedge.Core.ViewModel
                 OnPropertyChanged();
             }
         }
-
-        public ICommand NavigateToItemCommand
-        {
-            get { throw new NotImplementedException(); }
-        }
-
+        
         public ItemVerticalViewModel(IContentProvider contentProvider, NavigationService navigationService)
         {
             _contentProvider = contentProvider;

@@ -17,9 +17,14 @@ namespace ZedgeLonglistSelector
             InitializeComponent();
         }
 
-        private void NavigateToVerticalClicked(object sender, RoutedEventArgs e)
+        private void NavigateToComplexVerticalClicked(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Uri("/VerticalPage.xaml", UriKind.Relative));
+        }
+
+        private void NavigateToComplexSimpleClicked(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/SimpleVerticalPage.xaml", UriKind.Relative));
         }
     }
 }
